@@ -23,9 +23,9 @@ with st.expander('Analizar Polaridad y Subjetividad en un texto'):
     text1 = st.text_area('Escribe por favor: ')
     if text1:
 
-        #translation = translator.translate(text1, src="es", dest="en")
-        #trans_text = translation.text
-        #blob = TextBlob(trans_text)
+        translation = translator.translate(text1, src="es", dest="en")
+        trans_text = translation.text
+        blob = TextBlob(trans_text)
         blob = TextBlob(text1)
        
         
