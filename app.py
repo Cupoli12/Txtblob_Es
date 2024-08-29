@@ -1,6 +1,8 @@
 import streamlit as st
 from textblob import TextBlob
 from textblob_es import PatternAnalyzer
+pip install git+https://github.com/sloria/textblob-aptagger.git
+pip install git+https://github.com/markuskiller/textblob-es.git
 
 st.title('Análisis de Sentimiento en Español')
 
