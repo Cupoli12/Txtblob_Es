@@ -27,13 +27,28 @@ with st.expander('Analizar Polaridad y Subjetividad en un texto'):
         blob = TextBlob(trans_text)
         
         # Muestra la polaridad y subjetividad
-        st.write('Polaridad: ', round(blob.sentiment.polarity, 2))
-        st.write('Subjetividad: ', round(blob.sentiment.subjectivity, 2))
+        polaridad = round(blob.sentiment.polarity, 2)
+        subjetividad = round(blob.sentiment.subjectivity, 2)
         
-        x = round(blob.sentiment.polarity, 2)
-        if x >= 0.5:
+        st.write('Polaridad: ', polaridad)
+        st.write('Subjetividad: ', subjetividad)
+        
+        # Muestra imágenes según la subjetividad
+        if subjetividad >= 0.7:
+            st.image("P1.jpg", caption="Alta Subjetividad", use_column_width=True)
+        elif subjetividad <= 0.6:
+            st.image("P0.jpg", caption="Baja Subjetividad", use_column_width=True)
+        
+        # Muestra imágenes según la polaridad
+        if polaridad >= 0.5:
+            st.image("HF.jpg", caption="Sentimiento Positivo", use_column_width=True)
+        elif polaridad <= 0.4:
+            st.image("SF.jpg", caption="Sentimiento Negativo", use_column_width=True)
+
+        # Determina el sentimiento y muestra el mensaje correspondiente
+        if polaridad >= 0.5:
             st.write('Es un sentimiento Positivo 😊')
-        elif x <= -0.5:
+        elif polaridad <= -0.5:
             st.write('Es un sentimiento Negativo 😔')
         else:
             st.write('Es un sentimiento Neutral 😐')
@@ -43,5 +58,6 @@ with st.expander('Corrección en inglés'):
     if text2:
         blob2 = TextBlob(text2)
         st.write(blob2.correct())
+
 
 
